@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chuck Norris Jokes</title>
+  <link rel="stylesheet"  type="text/css" href="CSS/style.css">
+</head>
+<body>
+
+    <button id="jokeButton">Get Joke</button>
+    <p id="jokeText"></p>
+  
+    <script>
+      const jokeButton = document.getElementById('jokeButton');
+      const jokeText = document.getElementById('jokeText');
+  
+      jokeButton.addEventListener('click', () => {
+        fetch('https://api.chucknorris.io/jokes/random')
+          .then(response => response.json())
+          .then(data => {
+            jokeText.innerText = data.value;
+          })
+          .catch(error => {
+            jokeText.innerText = 'Failed to fetch joke.';
+            console.error(error);
+          });
+      });
+    </script>
+
+  <div class="container">
+    <h1>Chuck Norris Jokes</h1>
+  </div>
+</body>
+</html>
